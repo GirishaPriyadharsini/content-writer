@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bad Buddy | Deep Dive Episode Guide & Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fef7f2;
+            color: #231f1c;
+            line-height: 1.4;
+        }
+
+        .series-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1.8rem 4rem;
+        }
+
+        /* Hero Section with Imagery */
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2.8rem;
+            background: linear-gradient(135deg, #fff5ed 0%, #fffbf7 100%);
+            border-radius: 2.5rem;
+            padding: 2rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+            border: 1px solid #ffdfcf;
+        }
+
+        .poster-image {
+            flex: 0 0 220px;
+            background: linear-gradient(145deg, #b87a5a, #9c5d3e);
+            border-radius: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .poster-image .img-placeholder {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="64px" height="64px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>') no-repeat center;
+            background-size: 40px;
+            width: 100%;
+            height: 100%;
+            background-color: #aa6f50;
+            opacity: 0.8;
+        }
+        
+        .poster-image span {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            background: rgba(0,0,0,0.5);
+            padding: 0.3rem 0.8rem;
+            border-radius: 40px;
+            margin-bottom: 1rem;
+        }
+
+        .series-info {
+            flex: 1;
+        }
+
+        .series-info h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b4c2c, #c57148);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.2rem;
+        }
+
+        .tagline {
+            font-weight: 600;
+            color: #b7613b;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            letter-spacing: -0.2px;
+        }
+
+        .ratings {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 0.8rem 0;
+            font-size: 0.9rem;
+            background: #fff1e8;
+            padding: 0.6rem 1.2rem;
+            border-radius: 60px;
+            width: fit-content;
+        }
+
+        .ratings span i {
+            margin-right: 6px;
+            color: #c57148;
+        }
+
+        .desc-short {
+            margin-top: 1rem;
+            color: #3a2c23;
+            max-width: 95%;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* character cards */
+        .characters-section {
+            margin: 2rem 0 2.5rem;
+            background: #ffffffea;
+            border-radius: 2rem;
+            padding: 1.5rem 1.8rem;
+            border: 1px solid #f3e2d8;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+        }
+
+        .char-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: space-between;
+        }
+
+        .char-card {
+            flex: 1;
+            min-width: 190px;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s;
+            border: 1px solid #f0ded3;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .char-card i {
+            font-size: 2rem;
+            color: #bd744f;
+            margin-bottom: 0.6rem;
+        }
+
+        .char-name {
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .char-actor {
+            font-size: 0.7rem;
+            color: #a86544;
+            margin-top: 0.2rem;
+        }
+
+        /* episode carousel */
+        .episodes-scroll {
+            margin: 2rem 0 1rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 1.4rem;
+        }
+
+        .section-title h2 {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .nav-arrows {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: white;
+            border: 1px solid #e0cec2;
+            border-radius: 60px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #c47656;
+            color: white;
+            border-color: #c47656;
+        }
+
+        .cards-wrapper {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 0.5rem 0.2rem 1.8rem;
+            scrollbar-width: thin;
+        }
+
+        .episode-cards {
+            display: flex;
+            gap: 1.3rem;
+            width: max-content;
+        }
+
+        .ep-card {
+            background: white;
+            width: 280px;
+            border-radius: 1.6rem;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s;
+            cursor: pointer;
+            border: 1px solid #f0e0d5;
+            flex-shrink: 0;
+        }
+
+        .ep-card:hover {
+            transform: translateY(-6px);
+            border-color: #c47656;
+            box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.15);
+        }
+
+        .ep-card.active {
+            border: 2px solid #c47656;
+            background: #fffbf5;
+            transform: scale(1.01);
+        }
+
+        .card-img {
+            height: 140px;
+            background: linear-gradient(130deg, #d9bcab, #c7a089);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fef0e8;
+            position: relative;
+        }
+
+        .ep-number {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            color: white;
+        }
+
+        .card-content {
+            padding: 1rem 1rem 1.2rem;
+        }
+
+        .card-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .card-sub {
+            font-size: 0.7rem;
+            color: #c47656;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-preview {
+            font-size: 0.78rem;
+            color: #5d4537;
+            line-height: 1.4;
+        }
+
+        /* detail panel + immersive review */
+        .episode-detail-panel {
+            margin-top: 2rem;
+            background: #ffffffea;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f3e2d8;
+        }
+
+        .detail-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #f0ded3;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-header h3 {
+            font-size: 1.7rem;
+            font-weight: 800;
+        }
+
+        .detail-synopsis {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 1rem 0;
+            background: #fff9f4;
+            padding: 1rem;
+            border-radius: 1.2rem;
+        }
+
+        .review-box {
+            background: #fef5ef;
+            padding: 1.2rem 1.4rem;
+            border-radius: 1.4rem;
+            margin-top: 0.8rem;
+            border-left: 5px solid #c47656;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: #2d241f;
+        }
+
+        .review-box i {
+            color: #c47656;
+            margin-right: 6px;
+        }
+
+        .highlight-tag {
+            background: #f9f0ea;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #b5653c;
+            display: inline-block;
+            margin: 0.2rem 0.2rem;
+        }
+
+        @media (max-width: 780px) {
+            .series-container {
+                padding: 1rem;
+            }
+            .ep-card {
+                width: 240px;
+            }
+            .char-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="series-container">
+    <!-- Hero -->
+    <div class="hero-section">
+        <div class="poster-image">
+            <div class="img-placeholder"></div>
+            <span>BAD BUDDY</span>
+        </div>
+        <div class="series-info">
+            <h1>Bad Buddy <span style="font-weight: 400;">(แค่เพื่อนครับเพื่อน)</span></h1>
+            <div class="tagline">🔥 enemies to lovers · Romeo & Juliet reimagined · chemistry that redefined the genre 🔥</div>
+            <div class="ratings">
+                <span><i class="fas fa-star"></i> 8.3/10 (MDL)</span>
+                <span><i class="fas fa-chart-line"></i> #1125 ranked</span>
+                <span><i class="fas fa-users"></i> 87K+ watchers</span>
+                <span><i class="fas fa-trophy"></i> Best Y-series 2021</span>
+            </div>
+            <div class="desc-short">
+                <strong>Director:</strong> Aof Noppharnach · <strong>Starring:</strong> Ohm Pawat & Nanon Korapat.<br>
+                Two families at war — two boys caught in a secret friendship that turns into a heartfelt romance. 
+                Breaking every BL cliché, <em>Bad Buddy</em> delivers raw emotion, comedy, and one of the most iconic rooftop scenes in Thai drama history.
+            </div>
+        </div>
+    </div>
+
+    <!-- character cores -->
+    <div class="characters-section">
+        <h3 style="font-size:1.5rem; margin-bottom:1rem;"><i class="fas fa-heart"></i> main characters · emotional cores</h3>
+        <div class="char-grid">
+            <div class="char-card"><i class="fas fa-smile-wink"></i><div class="char-name">Pat (Ohm Pawat)</div><div class="char-actor">Ohm Pawat</div><div class="char-desc">Cheeky, impulsive Engineering freshman. Golden heart under rivalry. Falls first, falls harder, but respects every boundary.</div></div>
+            <div class="char-card"><i class="fas fa-pen-fancy"></i><div class="char-name">Pran (Nanon Korapat)</div><div class="char-actor">Nanon Korapat</div><div class="char-desc">Perfectionist Architecture student. Guarded by family pressure, fiercely loyal — shows love through tiny devastating gestures.</div></div>
+            <div class="char-card"><i class="fas fa-camera-retro"></i><div class="char-name">Ink & Pa</div><div class="char-actor">Milk & Love</div><div class="char-desc">Supportive besties / Yuri side couple. Ink’s warmth + Pa’s energy = emotional grounding + comic relief.</div></div>
+            <div class="char-card"><i class="fas fa-fist-raised"></i><div class="char-name">Wai & Korn</div><div class="char-actor">Jimmy & Drake</div><div class="char-desc">Loyal friends, betrayal to forgiveness arc — found family themes shine through.</div></div>
+        </div>
+    </div>
+
+    <!-- episode carousel -->
+    <div class="episodes-scroll">
+        <div class="section-title">
+            <h2><i class="fas fa-clapperboard"></i> episodes · select any card</h2>
+            <div class="nav-arrows">
+                <div class="nav-btn" id="scrollLeftBtn"><i class="fas fa-chevron-left"></i></div>
+                <div class="nav-btn" id="scrollRightBtn"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+        <div class="cards-wrapper" id="cardsWrapper">
+            <div class="episode-cards" id="episodeCardsList"></div>
+        </div>
+    </div>
+
+    <!-- dynamic detail + full analysis panel -->
+    <div class="episode-detail-panel" id="detailPanel">
+        <div class="detail-header">
+            <h3 id="detailEpTitle">Episode 1</h3>
+            <div class="detail-airdate" id="detailAirdate">Oct 29, 2021</div>
+        </div>
+        <div class="detail-synopsis" id="detailSynopsis"></div>
+        <div id="reviewContainer" class="review-box"></div>
+        <div id="detailHighlights"></div>
+    </div>
+</div>
+
+<script>
+    // comprehensive episode data with immersive, rewritten recaps & deep insights (based on original analysis but reframed for engagement)
+    const episodesData = [
+        { number: 1, title: "The Rivalry Reborn", airdate: "Oct 29, 2021", ratingShare: "0.131%",
+          synopsis: "After two years apart, Pat (Engineering) and Pran (Architecture) collide in a chaotic faculty war. Their childhood as neighbors turned enemies resurfaces — but saving Pa from drowning years ago still echoes. The trash can war, the night meet-cute, and a rivalry that feels like fate.",
+          review: "✨ The opener crackles with tension. The 'enemies' label feels thin when Pat instantly covers for Pran. The flashbacks hint at something deeper than family feud. Both leads' personalities burst through: Pat's impulsive charm, Pran's careful intensity. That drum vs guitar face-off? Electric. The show sets up a slow-burn that already hooks you.",
+          highlights: ["Iconic building chase", "Childhood flashback mystery", "Family feud origin tease", "First rooftop glance"] },
+        { number: 2, title: "Truce & Schemes", airdate: "Nov 5, 2021", ratingShare: "0.112%",
+          synopsis: "To stop faculty brawls, Pat and Pran become secret coordinators — texting late at night while pretending to hate each other. The comedic miscommunication about dorm neighbors leads to roof talks and genuine smiles. Pran's mother warns him to stay away, but Pat's protectiveness grows.",
+          review: "🎭 The mix-up with the 'mystery neighbor' is pure rom-com gold. Pran's quiet sadness while Pat remains obliviously charming creates beautiful friction. Their late-night chats feel like stolen intimacy. The scene where Pat's dad insults Pran under the bed? Heart-wrenching. Already layers of longing.",
+          highlights: ["Roof confessions", "Secret phone calls", "Pat's protective streak", "Emotional flashback at school"] },
+        { number: 3, title: "Closer Than Friends", airdate: "Nov 12, 2021", ratingShare: "0.131%",
+          synopsis: "Pat defends Pran in a bar fight. They start hanging out under the guise of 'enemies.' The tension skyrockets when Pat sings 'Just Friend?' at the music contest. Pran fights his own feelings, but the chemistry is undeniable.",
+          review: "🎸 Pat's relentless pursuit to make things right is everything. That guitar pick made from his ID? Small but devastating. Pran's walls crumble slowly. The bus station almost-confession had me holding my breath. Plus the jealousy hints — Pat doesn't even realize why he cares so much. Sublime.",
+          highlights: ["Guitar pick moment", "Jealous Pat", "Ink's photography", "Almost confession"] },
+        { number: 4, title: "Unspoken Feelings", airdate: "Nov 19, 2021", ratingShare: "0.058%",
+          synopsis: "Pat gets jealous of Pran's old friend Ink. The beach trip changes everything — Pat realizes his feelings aren't friendly anymore. Pran fights his own heart while pushing Pat away, but the tears at night reveal the truth.",
+          review: "💔 Heartbreak central. Pran's jealousy flashbacks reveal he's liked Pat for years. The beach hug, the silent tears — Nanon's acting crushes you. Pat's oblivious 'I like Ink' confession destroys Pran (and us). That final shot of Pran crying while Pat sleeps next to him? Wrecked.",
+          highlights: ["Beach emotional hug", "Pran's solo tears", "Devastating misunderstanding", "Pat's slow awakening"] },
+        { number: 5, title: "Kiss on the Rooftop", airdate: "Nov 26, 2021", ratingShare: "0.150%",
+          synopsis: "The cultural reset episode. Pat slowly realizes he's been in love with Pran all along, gets jealous of Wai, and after a raw confrontation on the rooftop — they kiss. Twice. Raw, emotional, iconic.",
+          review: "🏆 LEGENDARY. The roof scene deserves every praise. Pat's emotional spiral, the song that belongs to them, the confession without labels — and then that kiss. Tears, relief, years of longing. Ohm and Nanon pour everything into those 5 minutes. This is why Bad Buddy is untouchable.",
+          highlights: ["Rooftop kiss (cultural reset)", "Pat's jealousy rampage", "The song performance", "Raw confession"] },
+        { number: 6, title: "Hidden Romance", airdate: "Dec 3, 2021", ratingShare: "0.072%",
+          synopsis: "Pat and Pran steal secret moments: beach trips, hand-holding, but the hiding weighs on Pran. They start a ridiculous competition: who falls in love first loses. Underneath the teasing, both are already gone.",
+          review: "😭 Their dynamic shifts into soft domesticity. The ocean wrestling, the honest talk about their parents — 'what would our lives be without their hate?' The competition is just an excuse to flirt. Pran's smile when Pat isn't looking says it all. Comfort episode with aching undertones.",
+          highlights: ["Beach confession", "Midnight talk", "Wai's suspicion", "Fake competition, real feelings"] },
+        { number: 7, title: "Cracks in the Mask", airdate: "Dec 10, 2021", ratingShare: "0.062%",
+          synopsis: "School play rehearsals. Pat auditions just to be near Pran. Pran denies him the lead role, but Pat saves the day anyway. Their push-and-pull escalates until Pat declares 'I'd rather lose than see you in trouble.'",
+          review: "🎭 The satire of BL tropes is brilliant (Pat forcing a sponge bath!). But underneath, Pat's quiet heroism and Pran's reluctant softness shine. When Pat whispers his lines directly at Pran during the audition? Romantic devastation. The ending with Pa walking in on their kisses? Chaos perfected.",
+          highlights: ["Sponge bath trope subverted", "Pat's audition confession", "Play drama", "Stolen kisses"] },
+        { number: 8, title: "The Outed Couple", airdate: "Dec 17, 2021", ratingShare: "0.088%",
+          synopsis: "Newly official, Pat and Pran struggle to hide their relationship. Pat's recklessness vs Pran's anxiety. After a sweet rooftop date, they get caught by both friend groups — the curtain falls, and everyone sees.",
+          review: "😰 The secrecy weighs heavy. Pat wants Instagram official, Pran panics — realistic tension. Their make-up after the fight is tender (the xylophone shirtless scene is unhinged but perfect). Then the final reveal: Wai's shocked face, Korn's disbelief. Gut-punch cliffhanger.",
+          highlights: ["Rooftop dinner", "Jealousy & make-up", "The curtain drop", "Secret relationship stress"] },
+        { number: 9, title: "Family Storms", airdate: "Dec 24, 2021", ratingShare: "0.158%",
+          synopsis: "Wai feels betrayed. The rugby game forces Pat and Wai to cooperate. Then a violent rival threatens Wai, Pat takes a bullet (grazed), and the near-death experience unites the friend groups. But outside the hospital, Pat's parents loom.",
+          review: "⚡ Clunky gun plot aside, the emotional core works. Pat taking a bullet for Wai to protect Pran's friend? Ultimate boyfriend move. The reconciliation scene over video call is satisfying. But that final shot — Pran face-to-face with Pat's parents — terrifying. Next boss battle: parents.",
+          highlights: ["Pat takes a bullet", "Wai's forgiveness arc", "Hospital skinship", "Parents arrive"] },
+        { number: 10, title: "Apart but Still", airdate: "Jan 7, 2022", ratingShare: "0.1%",
+          synopsis: "Pat and Pran uncover the real reason for the family feud: Pran's mom lost a scholarship to Pat's dad. Both confess their relationship to their parents. Pran gets slapped. They meet on the rooftop, crying, and decide to run away together.",
+          review: "💔💥 The slap scene is brutal. Pran's mother has been the villain all along, but now we understand the wound. Pat's defiance in front of the crowd — 'Yes, he's my boyfriend' — gave chills. The final rooftop hug where Pran sobs 'I can't take it anymore' broke me. Escape plan activated.",
+          highlights: ["Family truth revealed", "Public confession", "Slap & heartbreak", "Escape to the beach"] },
+        { number: 11, title: "Reunion & Rebellion", airdate: "Jan 14, 2022", ratingShare: "0.2%",
+          synopsis: "Pat and Pran flee to the zero-waste town. They remove SIM cards, work at a bar, and Pran finally finishes 'Our Song.' Uncle Tong teaches them: you can't change the world, but you can refuse to let it change you. They return home, ready to face the music.",
+          review: "🌊 This episode breathes. The beach montage, fishing, drinking games — it's a healing interlude. Pran singing 'Our Song' for the first time while Pat watches with teary eyes? Cinema. Uncle Tong's philosophy becomes the show's thesis. That final walk back to their houses: dread + hope.",
+          highlights: ["Our Song debut", "Beach therapy", "Uncle Tong's wisdom", "Return home"] },
+        { number: 12, title: "Our Song (Finale)", airdate: "Jan 21, 2022", ratingShare: "0.165%",
+          synopsis: "4 years later. A fake-out breakup? No — Pat and Pran have been secretly together the whole time, only Wai, Korn, Pa, and Ink know. Parents turn a blind eye, and the couple thrives. The final shot: them bickering, kissing, and closing the door on us with a smile.",
+          review: "🏠 The misdirect feels cheeky but the message lands: they chose each other despite the world. The tin can phone call callback, the parents silently accepting, and that last montage of them being disgustingly in love — it's earned. Not a perfect finale, but a hopeful one. Pat and Pran won. And so did we.",
+          highlights: ["Fake-out twist", "Parents ignore the relationship", "Tin can flirting", "Full circle happiness"] }
+    ];
+
+    const cardsContainer = document.getElementById('episodeCardsList');
+    let currentActiveIndex = 0;
+
+    function renderCards() {
+        cardsContainer.innerHTML = '';
+        episodesData.forEach((ep, idx) => {
+            const card = document.createElement('div');
+            card.className = `ep-card ${idx === currentActiveIndex ? 'active' : ''}`;
+            card.setAttribute('data-ep-index', idx);
+            card.innerHTML = `
+                <div class="card-img">
+                    <i class="fas fa-play-circle" style="font-size: 2.5rem;"></i>
+                    <div class="ep-number">EP.${ep.number}</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">${ep.title}</div>
+                    <div class="card-sub">${ep.airdate}</div>
+                    <div class="card-preview">${ep.synopsis.substring(0, 95)}…</div>
+                </div>
+            `;
+            card.addEventListener('click', () => {
+                setActiveEpisode(idx);
+                const wrapper = document.getElementById('cardsWrapper');
+                const cardRect = card.getBoundingClientRect();
+                const wrapperRect = wrapper.getBoundingClientRect();
+                if (cardRect.right > wrapperRect.right || cardRect.left < wrapperRect.left) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            });
+            cardsContainer.appendChild(card);
+        });
+    }
+
+    function setActiveEpisode(index) {
+        if (index < 0) index = 0;
+        if (index >= episodesData.length) index = episodesData.length - 1;
+        currentActiveIndex = index;
+        const ep = episodesData[currentActiveIndex];
+        
+        document.getElementById('detailEpTitle').innerHTML = `Episode ${ep.number}: ${ep.title}`;
+        document.getElementById('detailAirdate').innerHTML = `<i class="far fa-calendar-alt"></i> ${ep.airdate} · share ${ep.ratingShare}`;
+        document.getElementById('detailSynopsis').innerHTML = ep.synopsis;
+        
+        const reviewDiv = document.getElementById('reviewContainer');
+        reviewDiv.innerHTML = `<i class="fas fa-pen-fancy"></i> <strong>deep dive · why it hits</strong><br>${ep.review}`;
+        
+        const highlightsDiv = document.getElementById('detailHighlights');
+        highlightsDiv.innerHTML = `<div style="margin-top:12px;"><i class="fas fa-tags"></i> iconic beats: ${ep.highlights.map(h => `<span class="highlight-tag">${h}</span>`).join('')}</div>`;
+        
+        document.querySelectorAll('.ep-card').forEach((card, i) => {
+            if (i === currentActiveIndex) card.classList.add('active');
+            else card.classList.remove('active');
+        });
+    }
+    
+    // scroll logic
+    const wrapper = document.getElementById('cardsWrapper');
+    document.getElementById('scrollLeftBtn').addEventListener('click', () => wrapper.scrollBy({ left: -300, behavior: 'smooth' }));
+    document.getElementById('scrollRightBtn').addEventListener('click', () => wrapper.scrollBy({ left: 300, behavior: 'smooth' }));
+    
+    renderCards();
+    setActiveEpisode(0);
+    setTimeout(() => {
+        const activeCard = document.querySelector('.ep-card.active');
+        if(activeCard) activeCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }, 150);
+    
+    // add thematic footer note
+    const footerNote = document.createElement('div');
+    footerNote.style.marginTop = '2rem';
+    footerNote.style.textAlign = 'center';
+    footerNote.style.fontSize = '0.75rem';
+    footerNote.style.color = '#a77054';
+    footerNote.innerHTML = `<i class="fas fa-heart" style="color:#c47656"></i> Bad Buddy · where enemies become soulmates · rooftop kisses forever <i class="fas fa-heart" style="color:#c47656"></i>`;
+    document.querySelector('.episode-detail-panel').after(footerNote);
+</script>
+</body>
+</html>

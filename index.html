@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Girisaa Writes • modern storyteller & digital strategist</title>
+  <!-- Google Fonts: Satoshi vibe using Inter + Space Grotesk for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">GIRISAA PRIYADHARSINI<span style="color:#bc9a6c;">.</span>M</div>
+    <div class="menu-toggle" id="mobile-menu">
+      <i class="fas fa-bolt"></i>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#blogs" class="nav-link">Blogs</a></li>
+      <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+      <li><a href="#contact" class="nav-link">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section id="home" class="hero">
+    <div class="container hero-content fade-in">
+      <div class="hero-badge"><i class="fas fa-bolt"></i> digital marketing & content strategy</div>
+      <h1>content that drives <br>real results.</h1>
+      <div class="hero-highlight">✧ 3x engagement | audience-focused strategy ✧</div>
+      <div class="hero-tagline">“I create data-driven content and marketing strategies that attract the right audience, increase engagement, and support business growth.”</div>
+      <div class="btn-group">
+        <button class="btn-primary" id="exploreWorkBtn">View portfolio <i class="fas fa-arrow-right"></i></button>
+        <a href="#contact" class="btn-outline-light"><i class="fab fa-whatsapp"></i> Connect on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section id="about">
+  <div class="container fade-in">
+    <div class="section-header">
+      <h2>about me</h2>
+      <p>content writing & digital marketing</p>
+    </div>
+    <div class="about-card">
+      <p style="font-size:1.1rem; margin-bottom: 1rem;">
+        Hi, I’m <strong style="color:#bc9a6c;">Girisaa Priyadharsini</strong>, an aspiring content writer with a focus on blog writing, storytelling, and digital content.
+        I create clear, engaging, and audience-focused content designed to connect with readers and support brand growth.
+      </p>
+      <p>
+        I am currently developing my skills in content strategy, SEO fundamentals, and audience analysis.
+        I focus on creating structured, meaningful content that delivers value rather than just filling space.
+      </p>
+      <div class="skill-tags">
+        <span class="skill-tag">✍️ Blog Writing</span>
+        <span class="skill-tag">📱 Social Media Content</span>
+        <span class="skill-tag">🎬 Basic Video Content</span>
+        <span class="skill-tag">📊 Content Strategy</span>
+        <span class="skill-tag">🔍 SEO Fundamentals</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blogs">
+  <div class="container fade-in">
+    <div class="section-header">
+      <h2>Blog Articles</h2>
+      <p>Content focused on SEO, audience engagement, and practical digital marketing insights</p>
+    </div>
+    <div class="blog-grid" id="blogGrid"></div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container fade-in">
+    <div class="section-header">
+      <h2>Portfolio</h2>
+      <p>Selected work showcasing blog writing, social media content, and audience-focused strategies</p>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container fade-in">
+    <div class="section-header">
+      <h2>Get in Touch</h2>
+      <p>Available for freelance projects, collaborations, and entry-level opportunities</p>
+    </div>
+    <div class="contact-section-wrapper">
+      <div class="contact-grid">
+        <div class="contact-info-block">
+          <h3><i class="fas fa-envelope" style="margin-right: 10px;"></i> Contact Information</h3>
+          <div class="contact-detail-item">
+            <i class="fas fa-envelope"></i>
+            <span>girisha2536@gmail.com</span>
+          </div>
+          <div class="contact-detail-item">
+            <i class="fab fa-linkedin"></i>
+            <a href="https://www.linkedin.com/in/girisaa-priyadharsini-m-9624bb2ab/" target="_blank">LinkedIn Profile</a>
+          </div>
+          <div class="contact-detail-item">
+            <i class="fab fa-github"></i>
+            <a href="https://github.com/GirishaPriyadharsini" target="_blank">GitHub</a>
+          </div>
+          <div class="contact-detail-item">
+            <i class="fab fa-instagram"></i>
+            <span>@girisaa.writes</span>
+          </div>
+          <div class="contact-detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Chennai, India · Open to remote work</span>
+          </div>
+          <div class="contact-detail-item">
+            <i class="fab fa-whatsapp"></i>
+            <span>+91 63792 90070</span>
+          </div>
+          <p style="font-size:0.8rem; margin-top: 1.5rem; color:#78726b;">
+            Typically responds within 24 hours
+          </p>
+        </div>
+        <div class="contact-form-block">
+          <form id="contactForm" action="https://formspree.io/f/xrbpggyj" method="POST">
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <textarea rows="4" id="message" name="message" placeholder="Tell me about your project or requirement"></textarea>
+            </div>
+            <button type="submit" class="btn-primary" id="sendBtn" style="background:#bc9a6c; color:#010101;">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+            <div id="form-feedback" class="form-feedback"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p style="font-weight: 600; letter-spacing: -0.2px;">Girisaa Priyadharsini... content that <span style="color:#bc9a6c;">converts 3x</span> while saving 80% of budget 🚀</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-medium"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p style="font-size: 0.75rem; opacity: 0.5;">© 2025... no boring copy allowed</p>
+  </div>
+</footer>
+
+<div id="blogModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div id="modal-body">
+      <h3 id="modalTitle"></h3>
+      <div id="modalDesc"></div>
+      <p style="margin-top: 1.5rem; border-top: 1px solid #2e2a25; padding-top: 1rem;">✨ Full piece available... slide into DMs for the extended cut.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const blogs = [
+    { title: "I started content creation with zero skills—here’s what actually helped", description: "What really made a difference when I had no idea where to start.", full: "When I started content creation, I didn’t have skills, tools, or confidence. What helped wasn’t expensive courses or perfect planning—it was starting small, staying consistent, and learning from mistakes. Simple actions like writing regularly, observing content online, and improving one step at a time made the biggest difference." },
+    { title: "Why your content feels boring (and how to fix it)", description: "The real reason your content isn’t engaging—and how to improve it.", full: "Most content feels boring not because of lack of ideas, but because of weak structure. Over-explaining, missing hooks, and unclear flow reduce engagement. To fix this, focus on strong openings, short sentences, and clear points. Keep it simple and write for the reader, not to impress." },
+    { title: "You don’t need fancy editing to make good videos (here’s what matters)", description: "Why simple videos perform better than over-edited ones.", full: "Good videos are not about effects—they are about clarity and engagement. A strong hook, clear message, and proper pacing matter more than transitions or filters. Even basic edits can perform well if the content is easy to understand and keeps the viewer interested." },
+    { title: "How beginners can start freelancing without experience", description: "Simple steps to get started even with zero clients.", full: "Starting freelancing without experience can feel confusing, but it’s possible. Begin by creating small sample work, building a simple portfolio, and applying consistently. Focus on improving your skills while taking small opportunities instead of waiting for perfect ones." },
+    { title: "Stop overthinking content—this is what actually works", description: "Why consistency and simplicity matter more than perfection.", full: "Overthinking stops progress. Instead of waiting for perfect ideas, focus on creating consistently. Clear, simple, and useful content performs better than complex or overplanned content. The more you create, the better you understand what works." }
+  ];
+  const portfolioItems = [
+    { type: "Freelancing Guide", desc: "Steps to start freelancing with no experience. Practical and beginner-friendly.", link: "#" },
+    { type: "Video Content Writing", desc: "How simple editing and strong scripting create engaging videos.", link: "#" },
+    { type: "Creative Writing (Fanfiction)", desc: "A storytelling piece showcasing narrative flow and character development.", link: "#" },
+    { type: "Series Analysis (Bad Buddy)", desc: "A breakdown of storytelling, character arcs, and emotional engagement in the series.", link: "#" }
+  ];
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>]/g, function(m) {
+      if(m === '&') return '&amp;';
+      if(m === '<') return '&lt;';
+      if(m === '>') return '&gt;';
+      return m;
+    });
+  }
+
+  function renderBlogs() {
+    const grid = document.getElementById('blogGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    blogs.forEach((blog, idx) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${escapeHtml(blog.title)}</h3>
+        <p>${escapeHtml(blog.description)}</p>
+        <button class="read-more" data-index="${idx}">read full vibe <i class="fas fa-arrow-right"></i></button>
+      `;
+      grid.appendChild(card);
+    });
+    document.querySelectorAll('.read-more').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = btn.getAttribute('data-index');
+        if (idx !== null) openBlogModal(parseInt(idx));
+      });
+    });
+  }
+
+  function openBlogModal(index) {
+    const blog = blogs[index];
+    if (!blog) return;
+    const modal = document.getElementById('blogModal');
+    document.getElementById('modalTitle').innerText = blog.title;
+    document.getElementById('modalDesc').innerHTML = `<p style="color:#ddd; line-height:1.5;">${escapeHtml(blog.full)}</p><p style="margin-top:1rem; color:#bc9a6c;"><strong>— ${escapeHtml(blog.description)}</strong></p>`;
+    modal.style.display = 'flex';
+  }
+
+  function renderPortfolio() {
+    const grid = document.getElementById('portfolioGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    portfolioItems.forEach(item => {
+      const portCard = document.createElement('div');
+      portCard.className = 'portfolio-item';
+      portCard.innerHTML = `
+        <h3>${escapeHtml(item.type)}</h3>
+        <p>${escapeHtml(item.desc)}</p>
+        <a href="${item.link}" class="view-btn" target="_blank">View Work <i class="fas fa-arrow-right"></i></a>
+      `;
+      grid.appendChild(portCard);
+    });
+  }
+
+  // WORKING EMAIL FORM using Formspree (free, no backend needed)
+  const contactForm = document.getElementById('contactForm');
+  const feedbackDiv = document.getElementById('form-feedback');
+  const sendBtn = document.getElementById('sendBtn');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      if (!name || !email || !message) {
+        feedbackDiv.innerHTML = '❌ Please fill in all fields before sending.';
+        feedbackDiv.style.color = '#d99e6b';
+        return;
+      }
+      
+      // Disable button and show loading state
+      const originalText = sendBtn.innerHTML;
+      sendBtn.disabled = true;
+      sendBtn.innerHTML = '<span class="spinner"></span> Sending...';
+      feedbackDiv.innerHTML = '';
+      
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+          feedbackDiv.innerHTML = `✨ Woohoo! Thanks ${escapeHtml(name)}, your message landed safely. I'll reply within 24h. ✨`;
+          feedbackDiv.style.color = '#bc9a6c';
+          contactForm.reset();
+        } else {
+          const errorData = await response.json();
+          console.error('Formspree error:', errorData);
+          feedbackDiv.innerHTML = '❌ Oops! Something went wrong. Please email me directly at girisha2536@gmail.com';
+          feedbackDiv.style.color = '#d99e6b';
+        }
+      } catch (error) {
+        console.error('Network error:', error);
+        feedbackDiv.innerHTML = '❌ Network error. Please check your connection or email me directly: girisha2536@gmail.com';
+        feedbackDiv.style.color = '#d99e6b';
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = originalText;
+        setTimeout(() => {
+          if (feedbackDiv.innerHTML.includes('Woohoo')) {
+            setTimeout(() => { feedbackDiv.innerHTML = ''; }, 5000);
+          }
+        }, 3000);
+      }
+    });
+  }
+
+  // navbar + smooth + active
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section');
+  const mobileToggle = document.getElementById('mobile-menu');
+  const navMenu = document.getElementById('nav-links');
+
+  function updateActiveNav() {
+    let current = '';
+    const scrollPos = window.scrollY + 150;
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href').substring(1);
+      if (href === current) link.classList.add('active');
+    });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (navMenu.classList.contains('active')) navMenu.classList.remove('active');
+      }
+    });
+  });
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+  }
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navMenu.classList.contains('active')) navMenu.classList.remove('active');
+  });
+  const exploreBtn = document.getElementById('exploreWorkBtn');
+  if (exploreBtn) {
+    exploreBtn.addEventListener('click', () => {
+      document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // modal close
+  const modal = document.getElementById('blogModal');
+  const closeModal = document.querySelector('.close-modal');
+  if (closeModal) closeModal.addEventListener('click', () => modal.style.display = 'none');
+  window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+
+  // fade-in observer
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('appear'); });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  renderBlogs();
+  renderPortfolio();
+  window.addEventListener('load', () => {
+    updateActiveNav();
+    document.querySelectorAll('.fade-in').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('appear');
+    });
+  });
+  window.addEventListener('scroll', updateActiveNav);
+</script>
+</body>
+</html>
